@@ -1,0 +1,468 @@
+
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+  
+<br/>
+<br/>
+<br/>
+<br/>
+
+	
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-12">
+          <div class="card border b+">
+            <form method="POST" id="formonForm" enctype="multipart/form-data" class="form-sample" data-cities-url="{% url 'administrer:ajax_load_cities' %}" novalidate>
+              <div class="card-header">
+
+          <h5 class="card-title text-uppercase"><CENTER><h4> <i class="zmdi zmdi-account" aria-hidden="true">FORMULAIRE D'AJOUT DU PERSONNEL</i></h4></CENTER>
+              </div>
+              <div class="card-body">
+                
+  <div class="row">
+    <div class="col">
+      <div class="form-outline">
+
+             <label class="form-label" for="form6Example2"
+          >Nom(s):</label>
+        <div class="input-group mb-3 w-100 mt-2 p-2 ">
+        
+
+        {{ form.nom_per|add_class:'form-control'}}
+            <!-- Button trigger modal -->
+
+       </div>
+      <div style="color:red">{{ form.nom_per.errors }}</div>
+
+      </div>
+    </div>
+    <div class="col">
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+       &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >Prénom(s):</label
+        >
+        {{ form.pren_per|add_class:'form-control'}}
+      </div>
+      <div style="color:red">{{ form.pren_per.errors }}</div>
+
+
+    </div>
+
+      <div class="col">
+         &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+       &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        <div class="form-outline">
+          <label class="form-label" for="form6Example1"
+            >Date de Naissance :</label
+          >
+        {{ form.dteNaiss_per|add_class:'form-control'}}
+        
+     <div style="color:red">{{ form.dteNaiss_per.errors }}</div>
+
+
+
+        </div>
+      </div>
+
+  <div class="col">
+     &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+       &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >photo:</label
+        >
+
+        {{ form.photo|add_class:'form-control'}}
+   <div style="color:red">{{ form.photo.errors }}</div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mb-4">
+    
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="form6Example2"
+            >Lieu de Naissance:</label
+          >
+        {{ form.lieu|add_class:'form-control'}}
+      <div style="color:red">{{ form.lieu.errors }}</div>
+        </div>
+      </div>
+
+       <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Sexe:</label
+        >
+          {{ form.Sex_per|add_class:'form-control'}}
+      </div>
+  <div style="color:red">{{ form.Sex_per.errors }}</div>
+
+    </div>
+
+       <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >Type de Personne:</label
+        >
+    {{ form.Type_per|add_class:'form-control'}}
+      </div>
+  <div style="color:red">{{ form.Type_per.errors }}</div>
+
+    </div>
+
+
+
+  <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="form6Example1"
+            >Matricule:</label
+          >
+          {{ form.Mat_per|add_class:'form-control'}}
+
+          {% comment %} {% render_field form.date_Emiss_cour|add_class:"form-control" type="date" placeholder="select" %} {% endcomment %}
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+  <div class="row mb-4">
+   
+
+
+  <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="form6Example1"
+            >Fonction/Occupation(s):</label
+          >
+          {{ form.post_per|add_class:'form-control'}}
+
+          {% comment %} {% render_field form.date_Emiss_cour|add_class:"form-control" type="date" placeholder="select" %} {% endcomment %}
+
+        </div>
+        <div style="color:red">{{ form.post_per.errors }}</div>
+
+      </div>
+
+    <div class="col">
+      <div class="form-outline">
+
+<label class="form-label" for="form6Example1" 
+          >Email:</label
+        >
+    {{ form.Emai_per|add_class:'form-control'}}
+      </div>
+      <div style="color:red">{{ form.Emai_per.errors }}</div>
+    </div>
+<div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Telephone(s):</label
+        >
+    {{ form.tel_per|add_class:'form-control'}}
+      </div>
+      <div style="color:red">{{ form.tel_per.errors }}</div>
+
+    </div>
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Domicile:</label
+        >
+
+        {{ form.dom_per|add_class:'form-control'}}
+
+      </div>
+      <div style="color:red">{{ form.dom_per.errors }}</div>
+
+    </div>
+
+
+
+  </div>
+
+ 
+
+
+
+
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Mecano:</label
+        >
+    {{ form.Meca_per|add_class:'form-control'}}
+
+      </div>
+    </div>
+
+     <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Numero de Décison:</label
+        >
+    {{ form.numDec|add_class:'form-control'}}
+
+
+      </div>
+    </div>
+
+
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Stage(s):</label
+        >
+
+        {{ form.stage_per|add_class:'form-control'}}
+
+      </div>
+      <div style="color:red">{{ form.stage_per.errors }}</div>
+
+    </div>
+
+    
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >Décoration:</label
+        >
+    {{ form.deco_per|add_class:'form-control'}}
+
+     
+      </div>
+    </div>
+
+
+ 
+  </div>
+
+
+
+
+
+  <div class="row mb-4">
+
+          
+   <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Situation Matrimoniale:</label
+        >
+    {{ form.situa_pers|add_class:'form-control'}}
+
+
+      </div>
+      <div style="color:red">{{ form.situa_pers.errors }}</div>
+
+
+    </div>
+
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Numero d'Arme:</label
+        >
+    {{ form.numAr_per|add_class:'form-control'}}
+
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Type d'Arme:</label
+        >
+
+        {{ form.Arme|add_class:'form-control'}}
+
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >Grade:</label
+        >
+    {{ form.Grades|add_class:'form-control'}}
+
+     
+      </div>
+    </div>
+
+  </div>
+  <div class="row mb-4">
+  
+      <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Diplome(s):</label
+        >
+    {{ form.Diplomes|add_class:'form-control'}}
+
+
+      </div>
+          <div style="color:red">{{ form.Diplomes.errors }}</div>
+
+    </div>
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Sous_Direction:</label
+        >
+
+        {{ form.sousdirection|add_class:'form-control'}}
+
+      </div>
+          <div style="color:red">{{ form.sousdirection.errors }}</div>
+
+    </div>
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >Service:</label
+        >
+    {{ form.service|add_class:'form-control'}}
+      </div>
+          <div style="color:red">{{ form.service.errors }}</div>
+
+    </div>
+
+
+      <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >personne(s) à Contacter:</label
+        >
+
+        {{ form.person|add_class:'form-control'}}
+
+      </div>
+<div style="color:red">{{ form.person.errors }}</div>
+
+
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >Date de Prise de service:</label
+        >
+    {{ form.datePrise|add_class:'form-control'}}
+      </div>
+          <div style="color:red">{{ form.datePrise.errors }}</div>
+
+    </div>
+
+
+      <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >Formation(s):</label
+        >
+    {{ form.formations|add_class:'form-control'}}
+      </div>
+
+    </div>
+
+           
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example1"
+          >Date d'Entrée à la Police:</label
+        >
+    {{ form.dateE|add_class:'form-control'}}
+      </div>
+    
+    </div>
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form6Example2"
+          >TROIS DERNIERS SERVICE ET POSTE OCCUPES AVANT LA DITT:</label
+        >
+    {{ form.AnSer_per|add_class:'form-control'}}
+
+     
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+  {% csrf_token %}
+
+              </div>
+              <div class="card-footer text-center">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-magic"></i>&nbsp; Valider
+                  </button>
+             
+              </div>
+            </form>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script>
+              $("#id_sousdirection").change(function () {
+                var url = $("#formonForm").attr("data-cities-url");  // get the url of the `load_cities` view
+                var sousdirectionId = $(this).val();  // get the selected country ID from the HTML input
+          
+                $.ajax({                       // initialize an AJAX request
+                  url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+                  data: {
+                    'sousdirection': sousdirectionId      // add the country id to the GET parameters
+                  },
+                  success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_service").html(data);  // replace the contents of the city input with the data that came from the server
+                  }
+                });
+          
+              });
+            </script> 
+          
+	<!--start overlay-->
+		  <div class="overlay toggle-menu"></div>
+		<!--end overlay-->
+
+    </div>
+    <!-- End container-fluid-->
+
+    
+
+
+   </div><!--End content-wrapper-->
+   <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+	
+	<!--Start footer-->
+	
+  <!--end color switcher-->
+   
+
+ 
+  
+
+
+
+
+{% endblock content %}

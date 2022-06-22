@@ -1,0 +1,10 @@
+ <form  method="get" action="{% url 'administrer:search' %}" accept-charset="utf-8">
+    <fieldset>    
+      <div class="input-group">
+        <input name="query" type="search" class="form-control" aria-label="Saisie de mots clés" placeholder="En fonction du nom..." required="required">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">Recherche</button>
+        </div>
+      </div>
+    </fieldset> 
+  </form>

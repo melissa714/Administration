@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+ 
+
+ 
+<div class="clearfix"></div>
+
+  <!--Start Dashboard Content-->
+
+</br>
+</br>
+</br>
+
+
+	
+<div class="container">
+  <form  method="get">
+    <fieldset>    
+      <div class="input-group">
+        <input name="query" type="search" class="form-control" aria-label="Saisie de mots clés" placeholder="En fonction de l'objet , du numero d'ordre ou du type " required="required">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">Recherche</button>
+        </div>
+      </div>
+    </fieldset> 
+  </form>
+
+{% if liste|length_is:"0" %}
+</br>
+</br>
+  <div class="text-center text-danger"> <p>Nous n'avons pas trouvé de requêtes!!!</div>
+
+{% else %}
+
+  </div>
+
+  </br>
+  </br>
+  </br>
+	<div class="row">
+	 <div class="col-12 col-lg-12">
+	   <div class="card">
+	     <div class="card-header"><a href="{% url 'administrer:AddCour' %}" class="btn btn-icon btn-primary" ><i class="fa fa-plus"></i></a>
+
+	       <div class="table-responsive">
+                 <table class="table align-items-center  table table-hover table-flush table-borderless">
+                  <thead>
+                   <tr>
+                <th scope="col"> Date Enregistrement</th>
+                <th scope="col"> N°d'ordre</th>
+                <th scope="col">Type Courrier</th>
+                <th scope="col">Objet</th>
+                <th scope="col">Fichier</th>
+                <th scope="col">Entite</th>
+                <th scope="col">Date d'emission</th>
+                <th scope="col">Date d'accusé de reception</th> 
+                <th scope="col">Operations</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                    {% for liste in liste  %}
+
+                  <tr>
+                    <td>{{ liste.date_ajout}}</td>
+
+                    <td>{{ liste.num_ordre_cour }}</td>
+                    <td   style="font-weight: bold"  class="container mt-1 fst-italic {% if liste.type_cour == "TRANSMISSION" %}badge rounded-pill bg-secondary{% elif liste.type_cour == 'INTERNE' %}badge rounded-pill bg-primary{% elif liste.type_cour == 'ENTRANT' %}badge rounded-pill bg-success{% else %}badge rounded-pill bg-warning{% endif %}">{{ liste.type_cour }}</td>
+                    <td>{{ liste.obj_cour }}</td>
+                    <td><a href="/media/{{liste.file_cour}}"><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"> </a> </td>
+                    <td>{{ liste.DestRecp  }}</td>
+
+                    
+                    <td>{{ liste.date_Emiss_cour  }}</td>
+                    <td>{{ liste.date_AccuseRecp_cour}}</td>
+                    <td>{{ liste.date_ajout }}</td>
+                    <td>
+
+                      <a href="{% url 'administrer:Modif' liste.id %}" class="btn btn-icon btn-primary"><i class="fa fa-pencil"></i></a>
+
+
+                      <a href="{% url 'administrer:pdf' liste.id %}" class="btn btn-icon btn-warning"><i class="fa fa-eye"></i></a>
+
+                <a
+                href="{% url 'administrer:suppression' liste.id %}"
+                class="btn btn-icon btn-danger "
+                data-toggle="modal"
+                data-target="#delete-item-modal"
+                onclick="delete_user(this)">
+
+                <i class="fa fa-trash"></i>
+
+                </a>
+
+
+              <div class="modal fade" id="delete-item-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                          <p class="text-danger fw-bold">êtes-vous sûr de vouloir supprimer???</p>
+                        </div>
+                        <div class="justify-content-between mb-2 mr-2 text-right">
+                            <form method="post"
+                                  id="item-delete-form"
+                            >
+                                <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Annuler</button>
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger" id="confirm-delete-item-button">Supprimer</button>
+                            </form>
+                        </div>
+                     </div>
+                    </div>
+                  </div>
+
+
+                    </td>
+                    
+                   </tr>
+
+                   
+
+				
+
+                 </tbody>
+                 {% endfor %}
+{% endif %}
+                
+                </table>
+               </div>
+	   </div>
+
+     <div class="row mt-3">
+      <div class="col-md-3 offset-md-4">
+
+              <ul class="pagination">
+
+                  {% if liste.has_previous %}
+                  
+                      
+                <li class="page-item ">
+                  <a class="page-link" href="?page= {{ liste.previous_page_number }}" >Precedent</a>
+                </li>
+
+                  {% endif %}
+
+                  <li class="page-item active"> 
+                      <a class="page-link" href="?page={{ liste.number }}">{{ liste.number }}</a>
+                  </li>
+                      
+
+
+                  {% if liste.has_next %}
+                  
+                  
+                  <li class="page-item ">
+                    <a class="page-link" href="?page={{ liste.next_page_number }}">Suivant</a>
+                  </li>
+
+                    {% endif %}
+
+
+              </ul>
+       
+      </div>
+
+   </div>
+
+
+
+
+	 </div>
+	</div><!--End Row-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

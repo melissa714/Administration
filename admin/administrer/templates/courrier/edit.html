@@ -1,0 +1,167 @@
+
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+  
+<br/>
+<br/>
+<br/>
+<br/>
+
+	
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-12">
+          <div class="card border b+">
+
+            <form method="POST" enctype="multipart/form-data"> 
+                                       {% csrf_token %}
+
+              <div class="card-header">
+                  
+                <CENTER><h4> <i class="fa fa-align-center  icon-envelope-letter" aria-hidden="true">FORMULAIRE</i></h4></CENTER>
+
+              </div>
+              <div class="card-body">
+                <div class="row mbs-4">
+                  <div class="col">
+                    <div class="form-outline">
+                         <label class="form-label" for="form6Example2"
+                        >Destinataire/Recepteur:</label>
+
+                      <div class="input-group mb-3 w-100 mt-2 p-2">
+                        {{ form.DestRecp}}
+                                    
+
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="fa fa-plus"></i></button>
+                  </div>
+
+                    </div>
+                  </div>
+                  <div class="col">
+                    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example2"
+                        >Numero Accusé de reception:</label
+                      >
+
+                      {{ form.num_AccRecp_cour|add_class:'form-control'}}
+
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example1"
+                          >Date d'emission:</label
+                        >
+                        {% render_field form.date_Emiss_cour|add_class:"form-control" type="date" placeholder="select" %}
+  
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example2"
+                          >Date Accussé de reception:</label
+                        >
+                        {% render_field form.date_AccuseRecp_cour|add_class:"form-control" type="date" placeholder="select" %}
+  
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="row mb-4">
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example1"
+                        >Type de Courrier:</label
+                      >
+                      {{form.type_cour}}
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline">
+
+            <label class="form-label" for="form6Example1" 
+                        >Numero d'ordre:</label
+                      >
+
+                      {{ form.num_ordre_cour }}
+
+
+                   
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example1"
+                        >Objet:</label
+                      >
+                      {{ form.obj_cour}}
+                    </div>
+                  </div>
+                  <div class="col">
+                    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example2"
+                        >Fichier</label
+                      >
+                      {% render_field form.file_cour|add_class:"form-control" type="file" %}
+
+                   
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-magic"></i>&nbsp; Valider
+                  </button>
+             
+              </div>
+            </form>
+
+	<!--start overlay-->
+		  <div class="overlay toggle-menu"></div>
+		<!--end overlay-->
+
+    </div>
+    <!-- End container-fluid-->
+
+    
+    {% include "courrier/entite.html" %}
+
+
+   </div><!--End content-wrapper-->
+   <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+	
+	<!--Start footer-->
+	
+  <!--end color switcher-->
+   
+
+ 
+  
+
+
+
+
+{% endblock content %}

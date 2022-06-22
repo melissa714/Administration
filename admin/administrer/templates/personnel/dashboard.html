@@ -1,0 +1,119 @@
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <!--Start Dashboard Content-->
+
+	<div class="card mt-3">
+   {% include "personnel/entetes.html" %}
+ </div>  
+	  
+	
+	<div class="row">
+     <div class="col-10 col-lg-6 col-xl-10">
+	    <div class="card text-center ">
+		 <div class="card-header">Personnel/ans
+		   <div class="card-action">
+			 <div class="dropdown">
+			 
+				
+			  </div>
+		   </div>
+		 </div>
+		 <div class="card-body ">
+		   
+			<div class="chart-container-1">
+        {% include "personnel/statistique.html" %}
+			  <canvas id="chart1">        
+    </canvas>
+
+			</div>
+		 </div>
+		 
+		 <div class="row m-0 row-group text-center border-top border-light-3">
+		   
+		   <div class="col-12 col-lg-4">
+		     <div class="p-3">
+		     </div>
+		   </div>
+		 </div>
+		 
+		</div>
+	 </div>
+   
+	</div><!--End Row-->
+
+
+
+  <div class="row">
+	 <div class="col-12 col-lg-12">
+	   <div class="card ">
+	     <div class="card-header">Tableaux des enregistrements récents
+		  <div class="card-action">
+           
+             </div>
+		 </div>
+	       <div class="table-responsive">
+                 <table class="table align-items-center table-flush table-borderless">
+                  <thead>
+                   <tr>
+                    <th >Nom</th>
+                    <th >Prenom</th>
+                    <th>Photo</th>
+                     <th>Matricule</th>
+                    <th>Mecano</th>
+                    <th>Type Personne</th>
+                   </tr>
+                   </thead>
+                   <tbody><tr>
+                  {% for person in person %}
+                    <td>{{ person.nom_per }}</td>
+                  <td>{{ person.pren_per }}</td>
+                  <td><a href="/media/{{ person.photo }}"><img src="{{ person.photo.url }}" class="product-img" alt="product img">
+
+                    <td>{{ person.Mat_per }}</td>
+                    <td>{{ person.Meca_per }}</td>
+                  <td>
+
+                    <div  class=" {% if  person.Type_per == "Civil" %}badge bg-warning{% else %}badge bg-success{% endif %}">{{ person.Type_per }}</div>
+
+
+
+                  </td>
+                 
+                
+                </tr>
+              {% endfor %}
+
+
+                 </tbody></table>
+               </div>
+	   </div>
+	 </div>
+	</div><!--End Row-->
+
+      <!--End Dashboard Content-->
+	  
+	<!--start overlay-->
+		  <div class="overlay toggle-menu"></div>
+		<!--end overlay-->
+		
+    </div>
+    <!-- End container-fluid-->
+    
+    </div><!--End content-wrapper-->
+   <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+	
+
+  
+{% endblock content %}
+
+
+
+

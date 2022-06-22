@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Personnel</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+
+<style>
+h1
+{
+    font-size:20px;
+    text-align:center;
+    font-family:Comic Sans MS ;
+
+}
+
+#contour
+{
+    border: 1px orange dashed;
+
+}
+
+
+ 
+
+
+</style>
+
+
+    <body>
+
+<table>
+        <tr>
+            <td><img src="static/assets/images/DITT.png" height="120px"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td><img src="static/assets/images/DITT.png"  height="120px"/></td>
+        </tr>
+</table>
+
+
+
+
+
+
+
+<div class="contour">     
+<h1><u>FICHE DU PERSONNEL</u></h1>
+</br></br>
+</div>
+
+  <h7 style="font-size:15px; border:1px solid orange dotted; padding:30px; margin:15px;"> 
+      <img src="{{base_url}}{{ person.photo.url }}" width="180px" height="230px" style="border:1px solid black dotted; padding:30px; margin:15px" >
+  </br>
+  </br></br>
+
+    </br>
+       <span style="font-family:Georgia; font-weight:bold;">NOM:</span>&nbsp;&nbsp;&nbsp;{{ person.nom_per }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">PRENOM(S):</span>&nbsp;&nbsp;&nbsp;{{ person.pren_per}}&nbsp;&nbsp;&nbsp;&nbsp;</br></br>
+       
+       
+       
+       <span style="font-family:Georgia; font-weight:bold;">SEXE:</span>&nbsp;&nbsp;&nbsp;{{ person.Sex_per}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">DATE DE NAISSANCE:</span>&nbsp;&nbsp;&nbsp;{{ person.dteNaiss_per}}&nbsp;&nbsp;&nbsp;</br></br>
+       
+       
+       
+       
+       <span style="font-family:Georgia; font-weight:bold;">LIEU DE NAISSANCE:</span>&nbsp;&nbsp;&nbsp;{{ person.lieu}}&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">GRADE:</span>&nbsp;&nbsp;&nbsp;{{ person.Grades}}&nbsp;&nbsp;</br></br>
+       
+       
+       
+       
+       <span style="font-family:Georgia; font-weight:bold;">MATRICULE:</span>&nbsp;&nbsp;&nbsp;{{ person.Mat_per}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">MECANO:</span>&nbsp;&nbsp;&nbsp;{{ person.Meca_per}}&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">DOMICILE:</span>&nbsp;&nbsp;&nbsp;{{ person.dom_per}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br></br>
+       <span style="font-family:Georgia; font-weight:bold;">SITUATION MATRIMONIALE:</span>&nbsp;&nbsp;{{ person.situa_pers}}&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">ENTREE A LA POLICE:</span>&nbsp;&nbsp;&nbsp;{{ person.dateE }}&nbsp;&nbsp;&nbsp;&nbsp;</br></br>
+       
+       
+       
+       <span style="font-family:Georgia; font-weight:bold;">NUMERO D'ARME:</span>&nbsp;&nbsp;{{ person.numAr_per }}&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">TELEPHONE:</span>&nbsp;&nbsp;&nbsp;{{ person.numDec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">EMAIL:</span>&nbsp;&nbsp;&nbsp;{{ person.Emai_per }}</br></br>
+       <span style="font-family:Georgia; font-weight:bold;">N°DECISION D'AFFECTATION:</span>&nbsp;&nbsp;&nbsp;{{ person.numDec }}&nbsp;&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">DATE DE PRISE DE SERVICE:</span>&nbsp;&nbsp;{{ person.datePrise}}</br></br>
+     
+
+       <span style="font-family:Georgia; font-weight:bold;">DERNIER SERVICE ET POSTE OCCUPES AVANT LA DITT:</span>&nbsp;&nbsp;{{ person.AnSer_per}}&nbsp;&nbsp;</br></br>
+       <span style="font-family:Georgia; font-weight:bold;">ENTREE A LA POLICE:</span>&nbsp;&nbsp;{{ person.dateE }}&nbsp;<span style="font-family:Georgia; font-weight:bold;">NUMERO D'ARME:</span>&nbsp;&nbsp;{{ person.numAr_per }}&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">TELEPHONE:</span>&nbsp;&nbsp;&nbsp;{{ person.numDec }}&nbsp;&nbsp</br></br>
+       
+       
+       
+       
+       <span style="font-family:Georgia; font-weight:bold;">EMAIL:</span>&nbsp;&nbsp;{{ person.Emai_per }}&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">N°DECISION D'AFFECTATION:</span>&nbsp;&nbsp;&nbsp;{{ person.numDec }}&nbsp;&nbsp;&nbsp;</br></br>
+     
+
+
+       <span style="font-family:Georgia; font-weight:bold;">SERVICE:</span>&nbsp;&nbsp;{{ person.services }}&nbsp;&nbsp;<span style="font-family:Georgia; font-weight:bold;">FONCTION/OCCUPATION:</span>&nbsp;&nbsp;{{ person.post_per}}&nbsp;&nbsp;&nbsp;</br></br>
+
+
+
+       <span style="font-family:Georgia; font-weight:bold;">STAGES EFFECTUES(03):</span>&nbsp;&nbsp;{{ person.stage_per}}&nbsp;&nbsp;</br></br>
+       
+
+       
+     <span style="font-family:Georgia; font-weight:bold;">DIPLOME(S):</span>&nbsp;&nbsp;&nbsp; {% for Diplomes in person.Diplomes.all %}
+     {{ Diplomes.lib_dip }},{% endfor %} &nbsp;&nbsp;&nbsp;</br></br>
+
+
+
+        
+
+       
+       <span style="font-family:Georgia; font-weight:bold;">FORMATION(S) EFFECTUEES:</span>&nbsp;&nbsp;&nbsp;{{ person.formations}}&nbsp;&nbsp;&nbsp;</br></br>
+
+       <span style="font-family:Georgia; font-weight:bold;"> DECORATION-DISTINCTION-AUTRES:</span>&nbsp;&nbsp;{{ person.deco_per}}&nbsp;&nbsp;</br></br>
+
+
+       <span style="font-family:Georgia; font-weight:bold;">PERSONNE A CONTACTER EN CAS D'URGENCE:</span>&nbsp;&nbsp;&nbsp;{{person.person}}&nbsp;&nbsp;&nbsp;&nbsp;</br></br></br></br></br>
+
+    <span>Fait à ........................................ le...../.............../.................................................................................  </br></br></br></br>
+
+
+    <u>L'interessé(e)</u>
+    </span>
+    </br>
+</br></br>
+
+    <span>NB:Joindre une copie des trois(3) derniers bulletins de notations.</span> 
+
+    
+    </h7>
+
+    </body>
+</html>

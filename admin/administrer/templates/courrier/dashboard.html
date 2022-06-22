@@ -1,0 +1,154 @@
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <!--Start Dashboard Content-->
+
+	<div class="card mt-3">
+   {% include "courrier/entetes.html" %}
+ </div>  
+	  
+	
+	<div class="row">
+     <div class="col-12 col-lg-8 col-xl-8">
+	    <div class="card ">
+		 <div class="card-header">Courriers/ans
+		   <div class="card-action">
+			 <div class="dropdown">
+			 
+				
+			  </div>
+		   </div>
+		 </div>
+		 <div class="card-body">
+		   
+			<div class="chart-container-1">
+        {% include "courrier/statistique.html" %}
+			  <canvas id="chart1">        
+</canvas>
+
+			</div>
+		 </div>
+		 
+		 <div class="row m-0 row-group text-center border-top border-light-3">
+		   
+		   <div class="col-12 col-lg-4">
+		     <div class="p-3">
+		     </div>
+		   </div>
+		 </div>
+		 
+		</div>
+	 </div>
+     <div class="col-12 col-lg-4 col-xl-4">
+        <div class="card">
+           <div class="card-header">Total Entité(s)/ans
+             <div class="card-action">
+             <div class="dropdown">
+           
+             
+              </div>
+             </div>
+           </div>
+           <div class="card-body">
+		     <div class="chart-container-2">
+          {% include "courrier/chart.html" %}
+               <canvas id="chart2"></canvas>
+			  </div>
+           </div>
+           <div class="table-responsive">
+             <table class="table align-items-center">
+               <tbody>
+               </br>
+                 <tr>
+                   <td><i class="fa fa-circle text-white mr-2"></i>Nombre Total d'entités par/ans</td>
+                    <td>Total</td>
+                
+
+
+               </tbody>
+             </table>
+           </div>
+         </div>
+     </div>
+	</div><!--End Row-->
+
+
+
+  <div class="row">
+	 <div class="col-12 col-lg-12">
+	   <div class="card ">
+	     <div class="card-header">Tableaux des enregistrements récents
+		  <div class="card-action">
+             <div class="dropdown">
+           
+            
+              </div>
+             </div>
+		 </div>
+	       <div class="table-responsive">
+                 <table class="table align-items-center table-flush table-borderless">
+                  <thead>
+                   <tr>
+                     <th>N'D'ORDRE</th>
+                     <th>Fichier</th>
+                     <th>Date accusé</th>
+                     <th>Objet</th>
+                     <th>Type</th>
+                     <th>DEST/RECP</th>
+                   </tr>
+                   </thead>
+                   <tbody><tr>
+                  {% for cour in courrier %}
+                   <td>{{cour.num_ordre_cour}}</td>
+                       <td><a href="/media/{{cour.file_cour}}"><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"> 
+                  </a></td>
+                  <td>
+                    <div>{{cour.date_AccuseRecp_cour}}</div>
+                  </td>
+                  <td>{{cour.obj_cour}}</td>
+                  <td>
+                    <div  class=" {% if cour.type_cour == "TRANSMISSION" %}badge badge-warning{% elif cour.type_cour == 'INTERNE' %}badge badge-primary{% elif cour.type_cour == 'ENTRANT' %}badge badge-success{% else %}badge badge-danger{% endif %}">{{ cour.type_cour }}</div>
+
+
+
+
+                  </td>
+                  <td>{{cour.DestRecp}}</td>
+                 
+                
+                </tr>
+              {% endfor %}
+
+
+                 </tbody></table>
+               </div>
+	   </div>
+	 </div>
+	</div><!--End Row-->
+
+      <!--End Dashboard Content-->
+	  
+	<!--start overlay-->
+		  <div class="overlay toggle-menu"></div>
+		<!--end overlay-->
+		
+    </div>
+    <!-- End container-fluid-->
+    
+    </div><!--End content-wrapper-->
+   <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+	
+
+  
+{% endblock content %}
+
+
+
+

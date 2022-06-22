@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+form {
+  border: 3px solid #f1f1f1;
+  font-family: Arial;
+}
+
+.container {
+  padding: 20px;
+  background-color: #f1f1f1;
+}
+
+input[type=text], input[type=submit] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=checkbox] {
+  margin-top: 16px;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+}
+
+</style>
+<body>
+    <h1>Date d'enregistrement:&nbsp;&nbsp;&nbsp;&nbsp; {{courrier.date_ajout}}</h1>
+
+<center><h2 style="font-size:20px; font-weight:bold center; font-style:italic; color:orange; text-decoration:underline">Courrier {{courrier}}</h2>
+</center>
+
+<form action="/action_page.php">
+  <div class="container">
+    <h1>Numero d'ordre:&nbsp;&nbsp;&nbsp;&nbsp; {{ courrier.num_ordre_cour}}</h1>
+    <h1>Numero d'accusé de Reception:&nbsp;&nbsp;&nbsp;&nbsp;{{ courrier.num_AccRecp_cour}}</h1>
+    <h1>Date d'Emission:&nbsp;&nbsp;&nbsp;&nbsp;{{ courrier.date_Emiss_cour}}</h1>
+    <h1>Date d'Accusé de Reception:&nbsp;&nbsp;&nbsp;&nbsp;{{ courrier.date_AccuseRecp_cour}}</h1>
+    <h1>Objet:&nbsp;&nbsp;&nbsp;&nbsp;{{ courrier.obj_cour }}</h1>
+    <h1>Destinataire/Recepteur:&nbsp;&nbsp;&nbsp;&nbsp;{{ courrier.DestRecp }}</h1>
+
+  </div>
+
+</form>
+
+</body>
+</html>

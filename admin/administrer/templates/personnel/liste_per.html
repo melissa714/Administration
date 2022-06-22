@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ 
+
+<div class="clearfix"></div>
+
+  <!--Start Dashboard Content-->
+
+</br>
+</br>
+</br>
+
+
+	
+<div class="container">
+{% include "personnel/search_form.html" %}
+
+ {% if person|length_is:"0" %}
+     </br>
+      </br>
+     <div class="text-center text-danger"> <p>Pas de Personnel!!!</div>
+
+ {% else %}
+
+  </div>
+
+  </br>
+  </br>
+  </br>
+	<div class="row">
+	 <div class="col-12 col-lg-12">
+	   <div class="card">
+	     <div class="card-header"><a href="{% url 'administrer:person_add' %}" class="btn btn-icon btn-primary" ><i class="zmdi zmdi-account-add"></i></a>
+
+	       <div class="table-responsive">
+                 <table class="table  table table-hover align-items-center table-flush table-borderless">
+                  <thead>
+                   <tr>
+                    <th scope="col">Photo</th>
+
+                    <th scope="col">Date d'Enregistrment</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Date Naissance</th>
+                    <th scope="col">Matricule</th>
+                    <th scope="col">Mecano</th>
+                    <th scope="col">Type Personne</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Operations</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+              {% for person in person  %}
+
+                  <tr>
+                    <td><a href="/media/{{person.photo}}">
+                      <img src="{{ person.photo.url }}" class="product-img" alt="product img" width="30px">
+                    <td>{{ person.dateEnr }}</td>
+                    <td>{{ person.nom_per|upper }}</td>
+                    <td>{{ person.pren_per }}</td>
+                    <td>{{ person.dteNaiss_per }}</td>
+                    <td>{{ person.Mat_per }}</td>
+                    <td>{{ person.Meca_per }}</td>
+                    <td style="font-weight:bold; font-size:1em;" class="container mt-2 fst-italic {% if  person.Type_per == "Civil" %}badge rounded-pill bg-warning{% else %}badge rounded-pill bg-success{% endif %}">{{ person.Type_per }}</td>
+                    <td>{{ person.service }}</td>
+                    
+                    <td>
+                      <a href="{% url 'administrer:person_change'  person.id %}" class="btn btn-icon btn-primary"><i class="fa fa-pencil"></i></a>
+                      <a href="{% url 'administrer:details'  person.id %}" class="btn btn-icon btn-warning"><i class="fa fa-eye"></i></a>
+
+
+                      <a
+                href="{% url 'administrer:supPerson' person.id %}"
+                class="btn btn-icon btn-danger "
+                data-toggle="modal"
+                data-target="#delete-item-modal"
+                onclick="delete_user(this)">
+
+                <i class="fa fa-trash"></i>
+
+              </a>
+
+
+            </td>
+
+              <div class="modal fade" id="delete-item-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                          <p class="text-danger fw-bold">êtes-vous sûr de vouloir supprimer???</p>
+                        </div>
+                        <div class="justify-content-between mb-2 mr-2 text-right">
+                            <form method="post"
+                                  id="item-delete-form"
+                            >
+                                <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Annuler</button>
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger" id="confirm-delete-item-button">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                    </td>
+                    
+                   </tr>
+
+                   
+
+				
+
+                 </tbody>
+        {% endfor %}
+{% endif %}
+                
+                </table>
+               </div>
+	   </div>
+
+    
+    <div class="row mt-3">
+      <div class="col-md-3 offset-md-4">
+
+              <ul class="pagination">
+
+                  {% if page_obj.has_previous %}
+                  
+                      
+                  <li class="page-item ">
+                    <a class="page-link" href="?page= {{ page_obj.previous_page_number }}" >Precedent</a>
+                  </li>
+
+                  {% endif %}
+
+                  <li class="page-item active"> 
+                      <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+                  </li>
+                      
+
+
+                  {% if page_obj.has_next %}
+                  
+                  
+                  <li class="page-item ">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Suivant</a>
+                  </li>
+
+                    {% endif %}
+
+
+              </ul>
+       
+      </div>
+
+    </div>  
+	 </div>
+	</div><!--End Row-->
+
+
+
+{% endblock content %}
+                    
+

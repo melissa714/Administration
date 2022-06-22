@@ -1,0 +1,40 @@
+
+{% load widget_tweaks %}
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content" style="background-color:#8FBC8F;">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Formulaire</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  <form method="POST">
+
+			{% csrf_token %}
+
+			 <div class="mb-3">
+				<label for="example" >Nom:</label>
+				{% render_field ent.nom_Entite|add_class:"form-control" %}
+				</div>
+				<div class="mb-3">
+				<label for="ex">Service:</label>
+				{% render_field ent.service|add_class:"form-control" %}
+				</div>
+				<div class="mb-3">
+				<label for="" >Personne:</label>
+				{% render_field ent.personne|add_class:"form-control"  %}
+				</div>     
+
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+			  <button type="submit" class="btn btn-success">Valider</button>
+			</div>
+		  </form>
+		</div>
+	   
+	  </div>
+	</div>
+  </div>
+
